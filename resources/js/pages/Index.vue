@@ -28,7 +28,8 @@ import { Head, Link } from '@inertiajs/vue3';
             <li><Link href="/table-02">Table ?? - Full-Time Undergraduates - First Majors - Traditional Programs</Link></li>
             <li><Link href="/table-03">Table ?? - Part-Time Undergraduates - First Majors - Traditional Programs</Link></li>
             <li><Link href="/table-04">Table ?? - Graduate Students by Major</Link></li>
-            <li><Link href="/term_demographics">Demographics</Link></li>
+            <li><Link href="/term_ft_demographics">Term FullTime Demographics</Link></li>
+            <li><Link href="/term_pt_demographics">Term PartTime Demographics</Link></li>
             <li><Link href="/catholic-numbers">Numbers of Catholic</Link></li>
             <li><Link href="/catholic-percent">Percentage of Catholics</Link></li>
         </ul>

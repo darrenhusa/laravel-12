@@ -119,4 +119,95 @@ class ChartDataController extends Controller
 
     }
 
+    public function showTermFullTimeDemographicData()
+    {
+        $data_ft = [
+             ['label' => 'Black or African American', 'color' => '#217ca3', 'values' => [22, 17, 75, 114]],
+             ['label' => 'Hispanics of any race', 'color' => '#8d230f', 'values' => [32, 12, 72, 116]],
+             ['label' => 'Other', 'color' => '#50CB93', 'values' => [8, 5, 12, 25]],
+             ['label' => 'White', 'color' => 'purple', 'values' => [45, 9, 71, 125]],
+             ['label' => 'Unknown', 'color' => '', 'values' => [39, 0, 1, 40]],
+        ];
+
+        $length_ft = count($data_ft);
+        $total_ft = [];
+
+        for ($i = 0; $i < 4; $i++) {
+            $sum = 0;
+            for ($j = 0; $j < $length_ft; $j++) {
+                $sum += $data_ft[$j]['values'][$i];
+            }
+            array_push($total_ft, $sum);
+        }
+
+        $labels_ft = [];
+        $numbers_ft = [];
+
+        for ($j = 0; $j < $length_ft; $j++) {
+            array_push($labels_ft, $data_ft[$j]['label']);
+            array_push($numbers_ft, $data_ft[$j]['values']);
+        }
+        array_push($labels_ft, 'Grand Total');
+        array_push($numbers_ft, $total_ft);
+
+        $series_ft = [
+            'title' => 'Demographic Distribution',
+            'subtitle' => '(Fall 2025 Full-time Undergraduates)',
+            'categories' => ['First-time Students', 'Transfer Students', 'Continuing/Returning Students', 'All FT Undergrads'],
+            'data' => $data_ft,
+        ];
+
+        return Inertia::render('TermFullTimeDemographics', [
+            'series' => $series_ft,
+            'labels' => $labels_ft,
+            'numbers' => $numbers_ft,
+        ]);
+
+    }
+
+
+    public function showTermPartTimeDemographicData()
+    {
+        $data_pt = [
+             ['label' => 'Black or African American', 'color' => '#217ca3', 'values' => [0, 0, 5, 5]],
+             ['label' => 'Hispanics of any race', 'color' => '#8d230f', 'values' => [0, 0, 2, 2]],
+             ['label' => 'Other', 'color' => '#50CB93', 'values' => [0, 0, 0, 0]],
+             ['label' => 'White', 'color' => 'purple', 'values' => [0, 0, 2, 2]],
+             ['label' => 'Unknown', 'color' => '', 'values' => [0, 0, 0, 0]],
+        ];
+
+        $length_pt = count($data_pt);
+        $total_pt = [];
+
+        for ($i = 0; $i < 4; $i++) {
+            $sum = 0;
+            for ($j = 0; $j < $length_pt; $j++) {
+                $sum += $data_pt[$j]['values'][$i];
+            }
+            array_push($total_pt, $sum);
+        }
+
+        $labels_pt = [];
+        $numbers_pt = [];
+
+        for ($j = 0; $j < $length_pt; $j++) {
+            array_push($labels_pt, $data_pt[$j]['label']);
+            array_push($numbers_pt, $data_pt[$j]['values']);
+        }
+        array_push($labels_pt, 'Grand Total');
+        array_push($numbers_pt, $total_pt);
+
+        $series_pt = [
+            'title' => 'Demographic Distribution',
+            'subtitle' => '(Fall 2025 Part-time Undergraduates)',
+            'categories' => ['First-time Students', 'Transfer Students', 'Continuing/Returning Students', 'All PT Undergrads'],
+            'data' => $data_pt,
+        ];
+
+        return Inertia::render('TermPartTimeDemographics', [
+            'series' => $series_pt,
+        ]);
+
+
+    }
 }

@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 
 Route::get('/catholic-percent', [ChartDataController::class, 'showStackedPercentageColumnChartData']);
+
+Route::get('/term_ft_demographics', [ChartDataController::class, 'showTermFullTimeDemographicData']);
+Route::get('/term_pt_demographics', [ChartDataController::class, 'showTermPartTimeDemographicData']);
