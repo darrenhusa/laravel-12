@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import Highcharts from 'highcharts';
-// import Exporting from 'highcharts/modules/exporting';
+import Exporting from 'highcharts/modules/exporting';
 // Exporting(Highcharts);
 
 const props = defineProps({
@@ -28,10 +28,10 @@ const styleObject = ref({
 });
 
 onMounted(() => {
-    console.log('inside onMounted().....');
-    console.log('props.series = ', props.series);
-    console.log('props.series.data = ', props.series.data);
-    console.log('props.series.data.length = ', props.series.data.length);
+    // console.log('inside onMounted().....');
+    // console.log('props.series = ', props.series);
+    // console.log('props.series.data = ', props.series.data);
+    // console.log('props.series.data.length = ', props.series.data.length);
 
     const seriesTemp = [];
     const number = props.series.data.length;
@@ -56,9 +56,19 @@ onMounted(() => {
         percentage.push((100.0 * props.series.data[i].values[0]) / entryTypeTotal);
     }
 
-    console.log(percentage);
+    // console.log(percentage);
 
     target.value = Highcharts.chart(document.getElementById('container'), {
+         exporting: {
+            chartOptions: {
+                chart: {
+                    style: {
+                        fontFamily: 'monospace'
+                    }
+                }
+            }
+        },
+        
         chart: {
             type: 'column'
         },
